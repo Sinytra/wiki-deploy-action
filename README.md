@@ -12,6 +12,8 @@ No secret is needed. The wiki checks that the workflow runs in the project's aut
 configured source branch.
 
 ```yaml
+name: Deploy wiki
+
 on:
   push:
     branches: [master]
