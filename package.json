@@ -1,0 +1,26 @@
+{
+  "name": "wiki-deploy-action",
+  "private": true,
+  "description": "GitHub Action to create a new Modded MC Wiki project deployment",
+  "type": "module",
+  "scripts": {
+    "build": "rollup -c",
+    "check-types": "tsc"
+  },
+  "dependencies": {
+    "@actions/core": "^3.0.1"
+  },
+  "devDependencies": {
+    "@rollup/plugin-commonjs": "^29.0.3",
+    "@rollup/plugin-node-resolve": "^16.0.3",
+    "@rollup/plugin-typescript": "^12.3.1",
+    "@types/node": "^24.19.4",
+    "rollup": "^4.68.8",
+    "tslib": "^2.9.1",
+    "typescript": "^5.9.3"
+  },
+  "packageManager": "pnpm@10.26.1",
+  "engines": {
+    "node": ">=24"
+  }
+}

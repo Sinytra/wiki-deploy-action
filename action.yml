@@ -1,0 +1,15 @@
+name: Deploy Modded Wiki project
+description: Create a new Modded MC Wiki project deployment
+branding:
+  icon: upload-cloud
+  color: blue
+inputs:
+  project:
+    description: Wiki project ID
+    required: true
+  token:
+    description: GitHub personal access token of a project member. Leave empty to authenticate with GitHub OIDC.
+    required: false
+runs:
+  using: node24
+  main: dist/index.js
