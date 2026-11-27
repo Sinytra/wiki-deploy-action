@@ -29589,7 +29589,6 @@ function getIDToken(aud) {
 }
 
 const API_URL = 'https://api.moddedmc.wiki';
-// The wiki backend expects OIDC tokens issued for the frontend URL
 const OIDC_AUDIENCE = 'https://moddedmc.wiki';
 async function run() {
     const project = getInput('project', { required: true });
@@ -29602,7 +29601,7 @@ async function run() {
     const endpoint = new URL(`/api/v1/dev/projects/${encodeURIComponent(project)}/deploy`, API_URL);
     const response = await fetch(endpoint, { method: 'POST', headers }).catch((e) => {
         const cause = e instanceof Error && e.cause instanceof Error ? e.cause.message : String(e);
-        throw new Error(`Failed to reach the wiki: ${cause}`);
+        throw new Error('Failed to reach the wiki: ' + cause);
     });
     const body = await response.json().catch(() => ({}));
     if (response.ok) {
@@ -29622,7 +29621,7 @@ async function run() {
         case 401:
             throw new Error(usingOidc
                 ? 'The OIDC token was rejected by the wiki.'
-                : 'The token was rejected. It may have expired; create a new PAT and update the secret.');
+                : 'The token was rejected. Has it expired? Please create a new PAT and update the secret.');
         case 403:
             throw new Error("This workflow's repository or branch doesn't match the project's configured source repository and branch.");
         case 404:
